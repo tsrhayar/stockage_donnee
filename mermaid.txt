@@ -1,0 +1,53 @@
+classDiagram
+    class Repos {
+        -id: int
+        -Name: string
+        -Description: string
+        -Stars: int
+        -URL: string
+        -DateCreation: date
+        -LastModification: date
+        -Forks: int
+    }
+
+    class Contributors {
+        -id: int
+        -login: string
+    }
+
+    class Topics {
+        -id: int
+        -name: string
+    }
+
+    class Languages {
+        -id: int
+        -name: string
+    }
+
+    class RepoLanguage {
+        -repo: Repo
+        -language: Language
+        -is_main: boolean
+    }
+
+    class RepoContributor {
+        -repo: Repo
+        -contributor: Contributor
+        -contributions: int
+    }
+
+    class RepoTopic {
+        -topic: Topic
+        -repo: Repo
+    }
+
+    Repo "1" --> "0..*" RepoLanguage
+    Repo "1" --> "0..*" RepoContributor
+    Repo "1" --> "0..*" RepoTopic
+    Language "1" --> "0..*" RepoLanguage
+    Contributor "1" --> "0..*" RepoContributor
+    Topic "1" --> "0..*" RepoTopic
+
+
+boulce insert
